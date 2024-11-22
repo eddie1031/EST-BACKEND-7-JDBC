@@ -1,0 +1,24 @@
+<configuration>
+    <!--  로그 출력 방법 정의, STDOUT이라는 이름의 appender를 생성 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!--   로그 형식 지정     -->
+        <encoder>
+            <!--
+            <encoder>:              로그 형식을 지정합니다.
+            %d{HH:mm:ss.SSS}:       로그를 발생시킨 시간을 밀리초 단위로 표시합니다.
+            [%thread]:              로그를 발생시킨 스레드 이름을 표시합니다.
+            %-5level:               로그의 **레벨(DEBUG, INFO 등)**을 5자리로 정렬합니다.
+            %logger{36}:            로그를 기록한 클래스 이름을 최대 36자리로 제한합니다.
+            - %msg:                 로그의 메시지를 출력합니다.
+            %n:                     줄바꿈을 의미합니다.
+            %kvp:                   Key-Value Pair 형식의 부가 정보 출력 (이 부분은 생략될 가능성도 있음).
+           -->
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} -%kvp- %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!-- 로깅에 대한 기본 설정(루트 설정), DEBUG 레벨의 로그 출력 설정  -->
+    <root level="DEBUG">
+        <!--   정의한 appender(STDOUT)를 사용해 로그를 출력하도록 지정합니다.   -->
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
